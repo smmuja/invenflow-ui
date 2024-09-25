@@ -17,6 +17,12 @@ export async function loader() {
     },
   });
 
+  if (response.status === 401 && !response.ok) {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+    alert("Login expired");
+  }
+
   if (response.ok) {
     const products = await response.json();
     return { products: products.data };
