@@ -5,19 +5,16 @@ import { baseApi } from "../config/baseApi";
 
 export async function action({ request }) {
   const formData = await request.formData();
-  const name = formData.get("name");
+  const username = formData.get("username");
   const email = formData.get("email");
   const password = formData.get("password");
-  // console.log({ formData, name, email, password });
-
-  // return { success: true };
 
   const response = await fetch(`${baseApi}/auth/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ name, email, password }),
+    body: JSON.stringify({ username, email, password }),
   });
 
   if (response.ok) {
@@ -29,8 +26,6 @@ export async function action({ request }) {
 }
 
 export function RegisterPage() {
-  // console.log(baseApi);
-
   const actionData = useActionData();
 
   if (actionData?.success) {
@@ -46,15 +41,15 @@ export function RegisterPage() {
             <div className="space-y-4">
               <div>
                 <label
-                  htmlFor="name"
+                  htmlFor="username"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Name
+                  Username
                 </label>
                 <input
                   type="text"
-                  name="name"
-                  id="name"
+                  name="username"
+                  id="username"
                   required
                   className="w-full px-3 py-2 border rounded"
                 />
