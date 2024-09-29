@@ -45,6 +45,16 @@ const router = createBrowserRouter([
         element: <RegisterPage />,
       },
       {
+        path: "/explore/products",
+        loader: productsAllLoader,
+        element: <AllProductsPage />,
+      },
+      {
+        path: "/explore/products/:id",
+        loader: productsAllLoader,
+        element: <AllProductsPage />,
+      },
+      {
         path: "*",
         element: <div className="p-4">Nothing found</div>,
       },
