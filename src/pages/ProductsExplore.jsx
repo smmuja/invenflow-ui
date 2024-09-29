@@ -8,7 +8,7 @@ export async function loader() {
   return { products: products.data };
 }
 
-export function AllProductsPage() {
+export function ProductsExplorePage() {
   const { products } = useLoaderData();
   console.log(products);
   return (

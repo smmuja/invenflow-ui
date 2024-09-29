@@ -18,12 +18,14 @@ import { action as productsAddAction } from "./pages/ProductsAdd.jsx";
 import { action as productsDetailEditAction } from "./pages/ProductDetailEdit.jsx";
 
 import { loader as productsLoader } from "./pages/ProductsDashboardPage.jsx";
-import { loader as productsAllLoader } from "./pages/AllProducts.jsx";
+import {
+  loader as productsAllLoader,
+  ProductsExplorePage,
+} from "./pages/ProductsExplore.jsx";
 import { loader as productsDetailEditLoader } from "./pages/ProductDetailEdit.jsx";
 
 import { DashboardLayout, PublicLayout } from "./layout";
 import { RouteProtection } from "./components/RouteProtection.jsx";
-import { AllProductsPage } from "./pages/AllProducts.jsx";
 
 const router = createBrowserRouter([
   {
@@ -47,12 +49,12 @@ const router = createBrowserRouter([
       {
         path: "/explore/products",
         loader: productsAllLoader,
-        element: <AllProductsPage />,
+        element: <ProductsExplorePage />,
       },
       {
         path: "/explore/products/:id",
         loader: productsAllLoader,
-        element: <AllProductsPage />,
+        element: <ProductsExplorePage />,
       },
       {
         path: "*",
