@@ -1,10 +1,6 @@
 import { Navigate, useActionData, useLoaderData } from "react-router-dom";
 import { ProductForm } from "../components/ProductForm";
 import { baseApi } from "../config/baseApi";
-// import { useAuth } from "../context/AuthContext";
-
-// const token = localStorage.getItem("token");
-// const { token } = useAuth();
 
 export async function loader({ params }) {
   const token = localStorage.getItem("token");
@@ -16,10 +12,8 @@ export async function loader({ params }) {
       Authorization: `Bearer ${token}`,
     },
   });
-  // console.log({ product });
   if (response.ok) {
     const product = await response.json();
-    // return { products: products.data };
     return { product: product.data };
   } else {
     return { error: "Failed to fetch product detail" };
@@ -47,19 +41,16 @@ export async function action({ request, params }) {
     body: JSON.stringify(updateProduct),
   });
 
+  if (response.status === 403) {
+    alert("You do not have access to perform this operation");
+    window.location.href = "/";
+    return;
+  }
   if (response) {
     return { success: true };
   } else {
     return { error: "Failed to update product" };
   }
-
-  // if (response.ok) {
-  //   const result = await response.json();
-  //   return { success: true, product: result.data };
-  // } else {
-  //   const errorMessage = await response.text();
-  //   return { error: `Failed to update product: ${errorMessage}` };
-  // }
 }
 
 export function ProductDetailEditPage() {

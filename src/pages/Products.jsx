@@ -54,16 +54,30 @@ export function ProductsPage() {
   const handleDelete = (productId) => {
     setModalMessage("Are you sure you want to delete this product?");
     setConfirmAction(() => async () => {
-      await fetch(`${baseApi}/products/${productId}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      alert(`Product ID ${productId} deleted successfully`);
-      closeModal();
-      navigate("/products");
+      try {
+        const response = await fetch(`${baseApi}/products/${productId}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (response.status === 403) {
+          alert("You don not have access to perform this operation");
+          window.location.href = "/";
+          return;
+        } else if (response.ok) {
+          alert(`Product ID ${productId} deleted successfully`);
+          closeModal();
+          navigate("/products");
+        } else {
+          alert("Failed to delete product");
+        }
+      } catch (error) {
+        console.error("Error deleting product", error);
+        alert("An error occurred while deleting the product");
+      }
     });
     openModal();
   };
