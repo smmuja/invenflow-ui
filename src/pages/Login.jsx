@@ -40,7 +40,7 @@ export function LoginPage() {
     };
     localStorage.setItem("token", actionData.token);
     login(actionData.token, userInfo);
-    return <Navigate to="/products" />;
+    return <Navigate to="/dashboard/products" />;
   }
 
   return (

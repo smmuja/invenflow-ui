@@ -9,7 +9,7 @@ export function NavItem() {
       {token ? (
         <>
           <Link
-            to="/products"
+            to="/explore/products"
             className="rounded-md px-4 py-2 hover:bg-gray-200"
           >
             Products
@@ -19,6 +19,12 @@ export function NavItem() {
             className="rounded-md px-4 py-2 hover:bg-gray-200"
           >
             Business
+          </Link>
+          <Link
+            to="/dashboard/products"
+            className="rounded-md px-4 py-2 hover:bg-gray-200"
+          >
+            My Dashboard
           </Link>
         </>
       ) : null}
