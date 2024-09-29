@@ -9,8 +9,10 @@ import { useAuth } from "../context/AuthContext";
 
 export async function loader() {
   const token = localStorage.getItem("token");
+  const currentUser = JSON.parse(localStorage.getItem("user"));
+  const username = currentUser?.username;
 
-  const response = await fetch(`${baseApi}/products`, {
+  const response = await fetch(`${baseApi}/users/${username}/products`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -32,7 +34,7 @@ export async function loader() {
   }
 }
 
-export function ProductsPage() {
+export function ProductsDashboardPage() {
   const { token } = useAuth();
 
   const loaderData = useLoaderData();

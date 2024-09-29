@@ -7,7 +7,7 @@ import {
   HomePage,
   ProductDetailEditPage,
   ProductsAddPage,
-  ProductsPage,
+  ProductsDashboardPage,
   RegisterPage,
 } from "./pages";
 import { AuthProvider } from "./context/AuthContext.jsx";
@@ -17,11 +17,13 @@ import { action as loginAction } from "./pages/Login.jsx";
 import { action as productsAddAction } from "./pages/ProductsAdd.jsx";
 import { action as productsDetailEditAction } from "./pages/ProductDetailEdit.jsx";
 
-import { loader as productsLoader } from "./pages/Products.jsx";
+import { loader as productsLoader } from "./pages/ProductsDashboardPage.jsx";
+import { loader as productsAllLoader } from "./pages/AllProducts.jsx";
 import { loader as productsDetailEditLoader } from "./pages/ProductDetailEdit.jsx";
 
 import { DashboardLayout, PublicLayout } from "./layout";
 import { RouteProtection } from "./components/RouteProtection.jsx";
+import { AllProductsPage } from "./pages/AllProducts.jsx";
 
 const router = createBrowserRouter([
   {
@@ -50,14 +52,18 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "/products",
+    path: "/dashboard/products",
     element: (
       <RouteProtection>
         <DashboardLayout />
       </RouteProtection>
     ),
     children: [
-      { index: true, loader: productsLoader, element: <ProductsPage /> },
+      {
+        index: true,
+        loader: productsLoader,
+        element: <ProductsDashboardPage />,
+      },
       {
         path: "new",
         action: productsAddAction,
