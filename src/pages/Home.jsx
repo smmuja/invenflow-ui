@@ -4,13 +4,13 @@ import { useAuth } from "../context/AuthContext";
 
 export function HomePage() {
   const { token } = useAuth();
+  const { currentUser } = useAuth();
   return (
     <>
-      {/* {token ? <DashboardLayout /> : ""} */}
       <div className="flex items-center justify-center bg-gray-50 min-h-screen">
         <div className="space-y-8">
           <h1 className="text-4xl font-bold text-center">
-            Welcome to Invenflow UI
+            Welcome to Invenflow UI{token && `, ${currentUser.username}`}
           </h1>
 
           {!token && (

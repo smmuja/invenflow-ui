@@ -25,8 +25,8 @@ export function Navbar() {
 
         <ol className="md:hidden flex space-x-2">
           <li>
-            <button onClick={toggleMenu} className="text-3xl">
-              <InvenflowLogo />
+            <button onClick={toggleMenu} className="text-3xl flex">
+              <InvenflowLogo /> ⌄
             </button>
           </li>
         </ol>

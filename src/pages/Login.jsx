@@ -21,23 +21,25 @@ export async function action({ request }) {
   }
 
   if (response.ok) {
-    const { token } = await response.json();
-    return { token };
+    const { token, user } = await response.json();
+    return { token, user };
   } else {
     return { error: "Failed to login. Check your credentials" };
   }
 }
 
 export function LoginPage() {
-  // const { token } = useAuth();
-  // console.log({ token });
-
   const actionData = useActionData();
   const { login } = useAuth();
 
   if (actionData?.token) {
+    const userInfo = {
+      _id: actionData.user._id,
+      username: actionData.user.username,
+      email: actionData.user.email,
+    };
     localStorage.setItem("token", actionData.token);
-    login(actionData.token);
+    login(actionData.token, userInfo);
     return <Navigate to="/products" />;
   }
 

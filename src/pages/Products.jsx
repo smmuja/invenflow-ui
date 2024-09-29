@@ -5,6 +5,7 @@ import useModal from "../hooks/useModal";
 import { useState } from "react";
 import { ModalConfirmation } from "../components/ModalConfirmation";
 import usePagination from "../hooks/usePagination";
+import { useAuth } from "../context/AuthContext";
 
 export async function loader() {
   const token = localStorage.getItem("token");
@@ -32,6 +33,8 @@ export async function loader() {
 }
 
 export function ProductsPage() {
+  const { token } = useAuth();
+
   const loaderData = useLoaderData();
   const products = loaderData.products;
   const { currentPage, setCurrentPage, paginatedData, totalPage } =
