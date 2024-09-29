@@ -23,9 +23,11 @@ import {
   ProductsExplorePage,
 } from "./pages/ProductsExplore.jsx";
 import { loader as productsDetailEditLoader } from "./pages/ProductDetailEdit.jsx";
+import { loader as productExploreDetailLoader } from "./pages/ProductsExploreDetail.jsx";
 
 import { DashboardLayout, PublicLayout } from "./layout";
 import { RouteProtection } from "./components/RouteProtection.jsx";
+import { ProductsExploreDetailPage } from "./pages/ProductsExploreDetail.jsx";
 
 const router = createBrowserRouter([
   {
@@ -52,9 +54,9 @@ const router = createBrowserRouter([
         element: <ProductsExplorePage />,
       },
       {
-        path: "/explore/products/:id",
-        loader: productsAllLoader,
-        element: <ProductsExplorePage />,
+        path: "/explore/products/:productId",
+        loader: productExploreDetailLoader,
+        element: <ProductsExploreDetailPage />,
       },
       {
         path: "*",
