@@ -12,13 +12,13 @@ export function NavItem() {
             to="/explore/products"
             className="rounded-md px-4 py-2 hover:bg-gray-200"
           >
-            Products
+            Explore Products
           </Link>
           <Link
-            to="/business"
+            to="/explore/partners"
             className="rounded-md px-4 py-2 hover:bg-gray-200"
           >
-            Business
+            Explore Partners
           </Link>
           <Link
             to="/dashboard/products"
