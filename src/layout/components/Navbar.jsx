@@ -18,7 +18,7 @@ export function Navbar() {
 
   return (
     <>
-      <nav className="mb-4 flex justify-between py-3 bg-blue-400 w-full sticky top-0">
+      <nav className="mb-4 flex justify-between py-3 bg-blue-400 w-full sticky top-0 z-40">
         <Link to="/" className="hidden md:flex">
           <InvenflowLogo />
         </Link>
