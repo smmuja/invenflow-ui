@@ -26,10 +26,13 @@ import {
 import { loader as productsDetailEditLoader } from "./pages/ProductDetailEdit.jsx";
 import { loader as productExploreDetailLoader } from "./pages/ProductsExploreDetail.jsx";
 import { loader as usersLoaderData } from "./pages/PartnersExplore.jsx";
+import { loader as userDetailLoaderData } from "./pages/PartnersDetail.jsx";
 
 import { DashboardLayout, PublicLayout } from "./layout";
 import { RouteProtection } from "./components/RouteProtection.jsx";
 import { ProductsExploreDetailPage } from "./pages/ProductsExploreDetail.jsx";
+import { PartnersDetailPage } from "./pages/PartnersDetail.jsx";
+import ErrorBoundary from "./components/ErrorBoundary.jsx";
 
 const router = createBrowserRouter([
   {
@@ -65,6 +68,12 @@ const router = createBrowserRouter([
         path: "/explore/partners",
         loader: usersLoaderData,
         element: <PartnersExplorePage />,
+      },
+      {
+        path: "/explore/partners/:username",
+        loader: userDetailLoaderData,
+        element: <PartnersDetailPage />,
+        errorElement: <ErrorBoundary />,
       },
       {
         path: "*",
