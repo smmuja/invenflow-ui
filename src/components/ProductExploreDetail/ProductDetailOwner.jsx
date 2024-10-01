@@ -16,7 +16,7 @@ export function ProductDetailOwner({ product = {} }) {
 
         <button
           onClick={() => {
-            navigate(`/users/${product.user_id.username}`);
+            navigate(`/explore/partners/${product.user_id.username}`);
           }}
           className="bg-blue-500 px-4 py-2 rounded-md my-5"
         >
