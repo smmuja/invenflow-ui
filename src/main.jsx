@@ -9,6 +9,7 @@ import {
   ProductsAddPage,
   ProductsDashboardPage,
   RegisterPage,
+  PartnersExplorePage,
 } from "./pages";
 import { AuthProvider } from "./context/AuthContext.jsx";
 
@@ -24,6 +25,7 @@ import {
 } from "./pages/ProductsExplore.jsx";
 import { loader as productsDetailEditLoader } from "./pages/ProductDetailEdit.jsx";
 import { loader as productExploreDetailLoader } from "./pages/ProductsExploreDetail.jsx";
+import { loader as usersLoaderData } from "./pages/PartnersExplore.jsx";
 
 import { DashboardLayout, PublicLayout } from "./layout";
 import { RouteProtection } from "./components/RouteProtection.jsx";
@@ -57,6 +59,12 @@ const router = createBrowserRouter([
         path: "/explore/products/:productId",
         loader: productExploreDetailLoader,
         element: <ProductsExploreDetailPage />,
+      },
+
+      {
+        path: "/explore/partners",
+        loader: usersLoaderData,
+        element: <PartnersExplorePage />,
       },
       {
         path: "*",

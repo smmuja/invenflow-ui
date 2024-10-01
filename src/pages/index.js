@@ -6,3 +6,4 @@ export * from "./ProductsAdd";
 export * from "./Login";
 export * from "./Register";
 export * from "./ProductsExplore";
+export * from "./PartnersExplore";
