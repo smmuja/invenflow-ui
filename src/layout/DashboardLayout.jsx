@@ -1,8 +1,10 @@
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { Navbar } from "./components/Navbar";
+import { useAuth } from "../context/AuthContext";
 
 export function DashboardLayout() {
+  const { currentUser } = useAuth();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -44,13 +46,15 @@ export function DashboardLayout() {
                 Products
               </Link>
               <Link
-                to="/business"
+                to={`/dashboard/profile/${currentUser.username}`}
                 className={`block py-2 px-4 text-gray-700 ${
-                  isActiveNavLink("/business") ? "bg-gray-200" : ""
+                  isActiveNavLink(`/dashboard/profile/${currentUser.username}`)
+                    ? "bg-gray-200"
+                    : ""
                 } hover:bg-gray-200 rounded`}
                 onClick={closeSidebar}
               >
-                Business
+                My Profile
               </Link>
             </ul>
           </nav>

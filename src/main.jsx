@@ -108,6 +108,32 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/dashboard/profile/:username",
+    element: (
+      <RouteProtection>
+        <DashboardLayout />
+      </RouteProtection>
+    ),
+    children: [
+      {
+        index: true,
+        loader: userDetailLoaderData,
+        element: <PartnersDetailPage />,
+      },
+      {
+        path: "new",
+        action: productsAddAction,
+        element: <ProductsAddPage />,
+      },
+      {
+        path: ":productId",
+        loader: productsDetailEditLoader,
+        action: productsDetailEditAction,
+        element: <ProductDetailEditPage />,
+      },
+    ],
+  },
 ]);
 
 createRoot(document.getElementById("root")).render(
