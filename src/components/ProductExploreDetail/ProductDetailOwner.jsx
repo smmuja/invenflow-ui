@@ -5,7 +5,7 @@ export function ProductDetailOwner({ product = {} }) {
   const navigate = useNavigate();
   return (
     <>
-      <div className="p-3 mt-5 mb-5 bg-gray-300">
+      <div className="p-3 mb-5 bg-gray-300 rounded-md w-full sm:max-w-lg">
         <h2 className="font-semibold">Product and Business Owner</h2>
         <div className="flex flex-row items-center gap-3">
           <div className="bg-blue-300 w-fit p-5 rounded-full my-3">
