@@ -7,3 +7,5 @@ export * from "./Login";
 export * from "./Register";
 export * from "./ProductsExplore";
 export * from "./PartnersExplore";
+export * from "./DashboardProfileEdit";
+export * from "./DashboardProfileNew";

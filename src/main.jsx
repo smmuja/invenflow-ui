@@ -10,6 +10,8 @@ import {
   ProductsDashboardPage,
   RegisterPage,
   PartnersExplorePage,
+  DashboardProfileEdit,
+  DashboardProfileNew,
 } from "./pages";
 import { AuthProvider } from "./context/AuthContext.jsx";
 
@@ -18,6 +20,7 @@ import { action as loginAction } from "./pages/Login.jsx";
 import { action as productsAddAction } from "./pages/ProductsAdd.jsx";
 import { action as productsDetailEditAction } from "./pages/ProductDetailEdit.jsx";
 import { action as profileEditAction } from "./pages/DashboardProfileEdit.jsx";
+import { action as profileNewAction } from "./pages/DashboardProfileNew.jsx";
 
 import { loader as productsLoader } from "./pages/ProductsDashboardPage.jsx";
 import {
@@ -35,7 +38,6 @@ import { RouteProtection } from "./components/RouteProtection.jsx";
 import { ProductsExploreDetailPage } from "./pages/ProductsExploreDetail.jsx";
 import { PartnersDetailPage } from "./pages/PartnersDetail.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
-import { DashboardProfileEdit } from "./pages/DashboardProfileEdit.jsx";
 
 const router = createBrowserRouter([
   {
@@ -130,6 +132,11 @@ const router = createBrowserRouter([
         loader: profileDetailLoader,
         action: profileEditAction,
         element: <DashboardProfileEdit />,
+      },
+      {
+        path: "new",
+        action: profileNewAction,
+        element: <DashboardProfileNew />,
       },
     ],
   },
