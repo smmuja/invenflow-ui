@@ -56,6 +56,19 @@ export function DashboardLayout() {
               >
                 My Profile
               </Link>
+              <Link
+                to={`/dashboard/profile/${currentUser.username}/edit`}
+                className={`block py-2 px-4 text-gray-700 ${
+                  isActiveNavLink(
+                    `/dashboard/profile/${currentUser.username}/edit`
+                  )
+                    ? "bg-gray-200"
+                    : ""
+                } hover:bg-gray-200 rounded`}
+                onClick={closeSidebar}
+              >
+                Edit Profile
+              </Link>
             </ul>
           </nav>
         </aside>

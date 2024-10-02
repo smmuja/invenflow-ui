@@ -17,6 +17,7 @@ import { action as registerAction } from "./pages/Register.jsx";
 import { action as loginAction } from "./pages/Login.jsx";
 import { action as productsAddAction } from "./pages/ProductsAdd.jsx";
 import { action as productsDetailEditAction } from "./pages/ProductDetailEdit.jsx";
+import { action as profileEditAction } from "./pages/DashboardProfileEdit.jsx";
 
 import { loader as productsLoader } from "./pages/ProductsDashboardPage.jsx";
 import {
@@ -27,12 +28,14 @@ import { loader as productsDetailEditLoader } from "./pages/ProductDetailEdit.js
 import { loader as productExploreDetailLoader } from "./pages/ProductsExploreDetail.jsx";
 import { loader as usersLoaderData } from "./pages/PartnersExplore.jsx";
 import { loader as userDetailLoaderData } from "./pages/PartnersDetail.jsx";
+import { loader as profileDetailLoader } from "./pages/DashboardProfileEdit.jsx";
 
 import { DashboardLayout, PublicLayout } from "./layout";
 import { RouteProtection } from "./components/RouteProtection.jsx";
 import { ProductsExploreDetailPage } from "./pages/ProductsExploreDetail.jsx";
 import { PartnersDetailPage } from "./pages/PartnersDetail.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
+import { DashboardProfileEdit } from "./pages/DashboardProfileEdit.jsx";
 
 const router = createBrowserRouter([
   {
@@ -121,16 +124,12 @@ const router = createBrowserRouter([
         loader: userDetailLoaderData,
         element: <PartnersDetailPage />,
       },
+
       {
-        path: "new",
-        action: productsAddAction,
-        element: <ProductsAddPage />,
-      },
-      {
-        path: ":productId",
-        loader: productsDetailEditLoader,
-        action: productsDetailEditAction,
-        element: <ProductDetailEditPage />,
+        path: "edit",
+        loader: profileDetailLoader,
+        action: profileEditAction,
+        element: <DashboardProfileEdit />,
       },
     ],
   },
