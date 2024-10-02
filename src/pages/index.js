@@ -9,3 +9,4 @@ export * from "./ProductsExplore";
 export * from "./PartnersExplore";
 export * from "./DashboardProfileEdit";
 export * from "./DashboardProfileNew";
+export * from "./DashboardProfileDetail";

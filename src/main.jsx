@@ -12,6 +12,7 @@ import {
   PartnersExplorePage,
   DashboardProfileEdit,
   DashboardProfileNew,
+  DashboardProfileDetailPage,
 } from "./pages";
 import { AuthProvider } from "./context/AuthContext.jsx";
 
@@ -124,7 +125,7 @@ const router = createBrowserRouter([
       {
         index: true,
         loader: userDetailLoaderData,
-        element: <PartnersDetailPage />,
+        element: <DashboardProfileDetailPage />,
       },
 
       {
