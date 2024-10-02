@@ -21,7 +21,8 @@ export async function action({ request }) {
     alert("Successfully registered");
     return { success: true };
   } else {
-    return { error: "Failed to register" };
+    const errorResponse = await response.json();
+    return { error: errorResponse.message || "Failed to register" };
   }
 }
 
@@ -37,6 +38,11 @@ export function RegisterPage() {
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
         <div className="w-full max-w-md p-8 space-y-6 bg-white rounded shadow-md">
           <h2 className="text-2xl font-black text-center">Register</h2>
+          {actionData?.error && (
+            <p className="text-red-500 text-sm">
+              Failed to register: <br /> {actionData.error}
+            </p>
+          )}
           <Form method="post" action="/register">
             <div className="space-y-4">
               <div>
