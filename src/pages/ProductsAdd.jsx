@@ -36,7 +36,7 @@ export function ProductsAddPage() {
     return <div className="text-red-500">{actionData.error}</div>;
   }
   if (actionData?.success) {
-    return <Navigate to={"/products"} />;
+    return <Navigate to={"/dashboard/products"} />;
   }
 
   return (

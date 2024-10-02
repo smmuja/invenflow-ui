@@ -22,7 +22,11 @@ export function ProductForm({ product = {} }) {
 
           <Form
             method={product._id ? "PUT" : "POST"}
-            action={product._id ? `/products/${product._id}` : "/products/new"}
+            action={
+              product._id
+                ? `/dashboard/products/${product._id}`
+                : "/dashboard/products/new"
+            }
           >
             <div className="space-y-4">
               <div>
