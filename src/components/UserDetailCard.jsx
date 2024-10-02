@@ -14,7 +14,7 @@ export const DataPair = ({ label, data }) => {
   );
 };
 
-export function PartnersDetailCard({ user = {} }) {
+export function UserDetailCard({ user = {} }) {
   return (
     <>
       <div className="bg-white flex flex-col items-center border p-3">
@@ -31,17 +31,23 @@ export function PartnersDetailCard({ user = {} }) {
             label="Member since"
             data={dateFormatter(user.createdAt || 1970)}
           />
+          <hr />
           <DataPair label="Username" data={user.username} />
+          <DataPair label="Email" data={user.email} />
+          <hr />
           <DataPair
             label="First Name"
-            data={firstEachWordCapitalize(user.user_info?.first_name || "User")}
+            data={firstEachWordCapitalize(user.user_info?.first_name || "-")}
           />
+
           <DataPair
             label="Last Name"
-            data={firstEachWordCapitalize(user.user_info?.last_name || "User")}
+            data={firstEachWordCapitalize(user.user_info?.last_name || "-")}
           />
-          <DataPair label="Email" data={user.email} />
+          <DataPair label="Bio" data={user.user_info?.bio} />
+
           <DataPair label="Phone" data={user.user_info?.phone_number} />
+          <DataPair label="Gender" data={user.user_info?.gender} />
         </div>
       </div>
     </>

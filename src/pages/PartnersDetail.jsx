@@ -1,5 +1,5 @@
-import { useLoaderData, useRouteError } from "react-router-dom";
-import { PartnersDetailCard } from "../components/PartnersDetailCard";
+import { useLoaderData } from "react-router-dom";
+import { UserDetailCard } from "../components/UserDetailCard";
 import { useFetch } from "../hooks/useFetch";
 import { ProductsCard } from "../components/ProductsCard";
 
@@ -31,7 +31,7 @@ export function PartnersDetailPage() {
 
   return (
     <>
-      {user ? <PartnersDetailCard user={user} /> : <h2>User not found</h2>}
+      {user ? <UserDetailCard user={user} /> : <h2>User not found</h2>}
 
       <div className="bg-white mt-5">
         <h2 className="mt-5 pl-3 font-medium">User products</h2>
