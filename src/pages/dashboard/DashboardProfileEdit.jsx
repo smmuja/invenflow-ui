@@ -1,13 +1,13 @@
 import { Navigate, useActionData, useLoaderData } from "react-router-dom";
 import { ProfileDetailForm } from "@/components/form/ProfileDetailForm";
-import { useFetch } from "@/hooks/useFetch";
 import { dashboardProfileUrl } from "@/config/paths";
+import { fetcher } from "@/utils/fetcher";
 
 const currentUser = JSON.parse(localStorage.getItem("user"));
 const username = currentUser?.username;
 
 export async function loader() {
-  const user = await useFetch(`/user-accounts/${username}`);
+  const user = await fetcher(`/user-accounts/${username}`);
   if (!user) {
     return { userError: "User not found" };
   }
@@ -24,7 +24,7 @@ export async function action({ request }) {
     gender: formData.get("gender"),
   };
 
-  const response = await useFetch(`/user-accounts/${username}`, {
+  const response = await fetcher(`/user-accounts/${username}`, {
     method: "PUT",
     body: JSON.stringify(updateUser),
   });

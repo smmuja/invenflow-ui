@@ -1,7 +1,7 @@
 import { baseApi } from "../config/baseApi";
 import { authLoginUrl } from "../config/paths";
 
-export async function useFetch(path, options = {}) {
+export async function fetcher(path, options = {}) {
   const token = localStorage.getItem("token");
 
   const headers = {

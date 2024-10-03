@@ -1,7 +1,7 @@
 import { Navigate, useActionData } from "react-router-dom";
 import { ProfileDetailForm } from "@/components/form/ProfileDetailForm";
-import { useFetch } from "@/hooks/useFetch";
 import { dashboardProfileUrl } from "@/config/paths";
+import { fetcher } from "@/utils/fetcher";
 
 const currentUser = JSON.parse(localStorage.getItem("user"));
 const username = currentUser?.username;
@@ -16,7 +16,7 @@ export async function action({ request }) {
     gender: formData.get("gender"),
   };
 
-  const response = await useFetch(`/user-accounts`, {
+  const response = await fetcher(`/user-accounts`, {
     method: "POST",
     body: JSON.stringify(updateUser),
   });

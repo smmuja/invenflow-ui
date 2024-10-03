@@ -1,12 +1,12 @@
 import { useLoaderData } from "react-router-dom";
 import { UserDetailCard } from "@/components/features/UserDetailCard";
-import { useFetch } from "@/hooks/useFetch";
+import { fetcher } from "@/utils";
 import { ProductsGrid } from "@/components/features/ProductsGrid";
 
 export async function loader({ params }) {
   const { username } = params;
 
-  const user = await useFetch(`/users/${username}`);
+  const user = await fetcher(`/users/${username}`);
   const products = await useFetch(`/users/${username}/products`);
 
   if (!user) {

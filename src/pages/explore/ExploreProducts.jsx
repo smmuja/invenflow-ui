@@ -1,12 +1,12 @@
 import { useLoaderData, useSearchParams } from "react-router-dom";
 import { ProductsGrid } from "@/components/features/ProductsGrid";
-import { useFetch } from "@/hooks/useFetch";
 import { ProductCategoryFilter } from "@/components/product/ProductCategoryFilter";
 import { useEffect, useState } from "react";
 import useLoadMore from "@/hooks/useLoadMore";
+import { fetcher } from "@/utils/fetcher";
 
 export async function loader() {
-  const products = await useFetch(`/products`);
+  const products = await fetcher(`/products`);
   console.log(products);
   return { products: products.data };
 }

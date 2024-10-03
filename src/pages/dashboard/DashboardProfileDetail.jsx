@@ -1,15 +1,15 @@
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import { UserDetailCard } from "@/components/features/UserDetailCard";
-import { useFetch } from "@/hooks/useFetch";
 import { ProductsGrid } from "@/components/features/ProductsGrid";
 import { useAuth } from "@/context/AuthContext";
 import { dashboardProfileUrl } from "@/config/paths";
+import { fetcher } from "@/utils/fetcher";
 
 export async function loader({ params }) {
   const { username } = params;
 
-  const user = await useFetch(`/users/${username}`);
-  const products = await useFetch(`/users/${username}/products`);
+  const user = await fetcher(`/users/${username}`);
+  const products = await fetcher(`/users/${username}/products`);
 
   if (!user) {
     return { userError: "User not found" };

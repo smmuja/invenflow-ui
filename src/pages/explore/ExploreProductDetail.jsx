@@ -1,12 +1,12 @@
 import { useLoaderData } from "react-router-dom";
-import { useFetch } from "../../hooks/useFetch";
+import { fetcher } from "@/utils/fetcher";
 import { ProductDetailCard } from "../../components/ProductExploreDetail/ProductDetailCard";
 import { ProductDetailOwner } from "../../components/ProductExploreDetail/ProductDetailOwner";
 
 export async function loader({ params }) {
   const { productId } = params;
 
-  const product = await useFetch(`/products/${productId}`);
+  const product = await fetcher(`/products/${productId}`);
   console.log(product);
   console.log(productId);
 
