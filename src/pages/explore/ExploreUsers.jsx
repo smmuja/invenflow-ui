@@ -1,9 +1,9 @@
 import { useLoaderData } from "react-router-dom";
 import { ExploreUsersCards } from "@/components/features/ExploreUsersCard";
-import { useFetch } from "@/hooks/useFetch";
+import { fetcher } from "@/utils/fetcher";
 
 export async function loader() {
-  const users = await useFetch(`/users`);
+  const users = await fetcher(`/users`);
   console.log(users);
   return { users: users.data };
 }
