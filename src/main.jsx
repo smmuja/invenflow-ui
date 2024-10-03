@@ -3,43 +3,6 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import {
-  LoginPage,
-  HomePage,
-  ProductDetailEditPage,
-  ProductsAddPage,
-  ProductsDashboardPage,
-  RegisterPage,
-  PartnersExplorePage,
-  DashboardProfileEdit,
-  DashboardProfileNew,
-  DashboardProfileDetailPage,
-} from "./pages";
-import { AuthProvider } from "./context/AuthContext.jsx";
-
-import { action as registerAction } from "./pages/Register.jsx";
-import { action as loginAction } from "./pages/Login.jsx";
-import { action as productsAddAction } from "./pages/ProductsAdd.jsx";
-import { action as productsDetailEditAction } from "./pages/ProductDetailEdit.jsx";
-import { action as profileEditAction } from "./pages/DashboardProfileEdit.jsx";
-import { action as profileNewAction } from "./pages/DashboardProfileNew.jsx";
-
-import { loader as productsLoader } from "./pages/ProductsDashboardPage.jsx";
-import {
-  loader as productsAllLoader,
-  ProductsExplorePage,
-} from "./pages/ProductsExplore.jsx";
-import { loader as productsDetailEditLoader } from "./pages/ProductDetailEdit.jsx";
-import { loader as productExploreDetailLoader } from "./pages/ProductsExploreDetail.jsx";
-import { loader as usersLoaderData } from "./pages/PartnersExplore.jsx";
-import { loader as userDetailLoaderData } from "./pages/PartnersDetail.jsx";
-import { loader as profileDetailLoader } from "./pages/DashboardProfileEdit.jsx";
-
-import { DashboardLayout, PublicLayout } from "./layout";
-import { RouteProtection } from "./components/RouteProtection.jsx";
-import { ProductsExploreDetailPage } from "./pages/ProductsExploreDetail.jsx";
-import { PartnersDetailPage } from "./pages/PartnersDetail.jsx";
-import ErrorBoundary from "./components/ErrorBoundary.jsx";
-import {
   authLoginUrl,
   authRegisterUrl,
   dashboardProductUrl,
@@ -47,6 +10,41 @@ import {
   exploreProductUrl,
   exploreUserUrl,
 } from "./config/paths.js";
+import {
+  HomePage,
+  LoginPage,
+  RegisterPage,
+  DashboardProductsPage,
+  DashboardProductsAddPage,
+  DashboardProductDetailEditPage,
+  DashboardProfileDetailPage,
+  DashboardProfileEdit,
+  DashboardProfileNew,
+  ExploreUsersPage,
+  ExploreUserDetailPage,
+  ExploreProductDetailPage,
+  ExploreProductsPage,
+} from "./pages";
+import { AuthProvider } from "./context/AuthContext.jsx";
+
+import { action as registerAction } from "./pages/auth/Register.jsx";
+import { action as loginAction } from "./pages/auth/Login.jsx";
+import { action as productsAddAction } from "./pages/dashboard/DashboardProductsAdd.jsx";
+import { action as productsDetailEditAction } from "./pages/dashboard/DashboardProductDetailEdit.jsx";
+import { action as profileEditAction } from "./pages/dashboard/DashboardProfileEdit.jsx";
+import { action as profileNewAction } from "./pages/dashboard/DashboardProfileNew.jsx";
+
+import { loader as productsLoader } from "./pages/dashboard/DashboardProducts.jsx";
+import { loader as productsAllLoader } from "./pages/explore/ExploreProducts.jsx";
+import { loader as productsDetailEditLoader } from "./pages/dashboard/DashboardProductDetailEdit.jsx";
+import { loader as productExploreDetailLoader } from "./pages/explore/ExploreProductDetail.jsx";
+import { loader as usersLoaderData } from "./pages/explore/ExploreUsers.jsx";
+import { loader as userDetailLoaderData } from "./pages/explore/ExploreUserDetail.jsx";
+import { loader as profileDetailLoader } from "./pages/dashboard/DashboardProfileEdit.jsx";
+
+import { DashboardLayout, PublicLayout } from "./layout";
+import { RouteProtection } from "./components/RouteProtection.jsx";
+import ErrorBoundary from "./components/ErrorBoundary.jsx";
 
 const router = createBrowserRouter([
   {
@@ -70,23 +68,23 @@ const router = createBrowserRouter([
       {
         path: exploreProductUrl,
         loader: productsAllLoader,
-        element: <ProductsExplorePage />,
+        element: <ExploreProductsPage />,
       },
       {
         path: `${exploreProductUrl}/:productId`,
         loader: productExploreDetailLoader,
-        element: <ProductsExploreDetailPage />,
+        element: <ExploreProductDetailPage />,
       },
 
       {
         path: exploreUserUrl,
         loader: usersLoaderData,
-        element: <PartnersExplorePage />,
+        element: <ExploreUsersPage />,
       },
       {
         path: `${exploreUserUrl}/:username`,
         loader: userDetailLoaderData,
-        element: <PartnersDetailPage />,
+        element: <ExploreUserDetailPage />,
         errorElement: <ErrorBoundary />,
       },
       {
@@ -107,18 +105,18 @@ const router = createBrowserRouter([
       {
         index: true,
         loader: productsLoader,
-        element: <ProductsDashboardPage />,
+        element: <DashboardProductsPage />,
       },
       {
         path: "new",
         action: productsAddAction,
-        element: <ProductsAddPage />,
+        element: <DashboardProductsAddPage />,
       },
       {
         path: ":productId",
         loader: productsDetailEditLoader,
         action: productsDetailEditAction,
-        element: <ProductDetailEditPage />,
+        element: <DashboardProductDetailEditPage />,
       },
     ],
   },

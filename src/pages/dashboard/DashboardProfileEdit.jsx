@@ -1,7 +1,7 @@
 import { Navigate, useActionData, useLoaderData } from "react-router-dom";
-import { ProfileDetailForm } from "../components/ProfileDetailForm";
-import { useFetch } from "../hooks/useFetch";
-import { dashboardProfileUrl } from "../config/paths";
+import { ProfileDetailForm } from "../../components/ProfileDetailForm";
+import { useFetch } from "../../hooks/useFetch";
+import { dashboardProfileUrl } from "../../config/paths";
 
 const currentUser = JSON.parse(localStorage.getItem("user"));
 const username = currentUser?.username;

@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom";
-import { useFetch } from "../hooks/useFetch";
-import { ProductDetailCard } from "../components/ProductExploreDetail/ProductDetailCard";
-import { ProductDetailOwner } from "../components/ProductExploreDetail/ProductDetailOwner";
+import { useFetch } from "../../hooks/useFetch";
+import { ProductDetailCard } from "../../components/ProductExploreDetail/ProductDetailCard";
+import { ProductDetailOwner } from "../../components/ProductExploreDetail/ProductDetailOwner";
 
 export async function loader({ params }) {
   const { productId } = params;
@@ -14,7 +14,7 @@ export async function loader({ params }) {
   return { product: product.data };
 }
 
-export function ProductsExploreDetailPage() {
+export function ExploreProductDetailPage() {
   const { product } = useLoaderData();
   console.log(product);
   return (

@@ -1,9 +1,7 @@
-import { useLoaderData, useNavigate, useParams } from "react-router-dom";
-import { UserDetailCard } from "../components/UserDetailCard";
-import { useFetch } from "../hooks/useFetch";
-import { ProductsCard } from "../components/ProductsCard";
-import { useAuth } from "../context/AuthContext";
-import { dashboardProfileUrl } from "../config/paths";
+import { useLoaderData } from "react-router-dom";
+import { UserDetailCard } from "../../components/UserDetailCard";
+import { useFetch } from "../../hooks/useFetch";
+import { ProductsCard } from "../../components/ProductsCard";
 
 export async function loader({ params }) {
   const { username } = params;
@@ -21,11 +19,7 @@ export async function loader({ params }) {
   return { user: user.data, products: products.data || [] };
 }
 
-export function DashboardProfileDetailPage() {
-  const token = useAuth();
-  const { username } = useParams();
-  const navigate = useNavigate();
-
+export function ExploreUserDetailPage() {
   const { user, products, userError, productsError } = useLoaderData();
 
   if (userError) {
@@ -37,16 +31,6 @@ export function DashboardProfileDetailPage() {
 
   return (
     <>
-      {token && user.user_info == null && (
-        <>
-          <button
-            className="bg-blue-500 px-4 py-2 my-2 rounded-md"
-            onClick={() => navigate(`${dashboardProfileUrl}/${username}/new`)}
-          >
-            Complete Profile
-          </button>
-        </>
-      )}
       {user ? <UserDetailCard user={user} /> : <h2>User not found</h2>}
 
       <div className="bg-white mt-5">
