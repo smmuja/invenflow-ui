@@ -49,7 +49,7 @@ import ErrorBoundary from "./components/common/ErrorBoundary.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <PublicLayout></PublicLayout>,
+    element: <PublicLayout />,
     children: [
       {
         path: "/",
