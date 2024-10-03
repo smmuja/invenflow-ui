@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import userImg from "/src/assets/user-male.png";
+import { exploreUserUrl } from "../../config/paths";
 
 export function ProductDetailOwner({ product = {} }) {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ export function ProductDetailOwner({ product = {} }) {
 
         <button
           onClick={() => {
-            navigate(`/explore/partners/${product.user_id.username}`);
+            navigate(`${exploreUserUrl}/${product.user_id.username}`);
           }}
           className="bg-blue-500 px-4 py-2 rounded-md my-5"
         >

@@ -3,6 +3,7 @@ import { UserDetailCard } from "../components/UserDetailCard";
 import { useFetch } from "../hooks/useFetch";
 import { ProductsCard } from "../components/ProductsCard";
 import { useAuth } from "../context/AuthContext";
+import { dashboardProfileUrl } from "../config/paths";
 
 export async function loader({ params }) {
   const { username } = params;
@@ -40,7 +41,7 @@ export function DashboardProfileDetailPage() {
         <>
           <button
             className="bg-blue-500 px-4 py-2 my-2 rounded-md"
-            onClick={() => navigate(`/dashboard/profile/${username}/new`)}
+            onClick={() => navigate(`${dashboardProfileUrl}/${username}/new`)}
           >
             Complete Profile
           </button>

@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { currencyFormatter, firstEachWordCapitalize } from "../utils";
 import { ProductCategoryBadge } from "./ProductCategoryBadge";
 import { ProductCategoryImage } from "./ProductCategoryImage";
+import { exploreProductUrl } from "../config/paths";
 
 export function ProductsCard({ products }) {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ export function ProductsCard({ products }) {
                 <p>{currencyFormatter(product.price)}</p>
                 <button
                   onClick={() => {
-                    navigate(`/explore/products/${product._id}`);
+                    navigate(`${exploreProductUrl}/${product._id}`);
                   }}
                   className="bg-blue-500 px-4 py-2 rounded-md w-full my-3"
                 >

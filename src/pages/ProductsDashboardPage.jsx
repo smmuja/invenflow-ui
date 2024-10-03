@@ -6,6 +6,7 @@ import { useState } from "react";
 import { ModalConfirmation } from "../components/ModalConfirmation";
 import usePagination from "../hooks/usePagination";
 import { useAuth } from "../context/AuthContext";
+import { dashboardProductUrl } from "../config/paths";
 
 export async function loader() {
   const token = localStorage.getItem("token");
@@ -90,7 +91,7 @@ export function ProductsDashboardPage() {
         <div className="flex justify-between items-center mb-4 w-11/12 md:w-full">
           <h1 className="text-2xl font-bold ">Products</h1>
           <Link
-            to="/dashboard/products/new"
+            to={`${dashboardProductUrl}/new`}
             className="px-4 py-2 text-white bg-blue-500 rounded"
           >
             Add Product

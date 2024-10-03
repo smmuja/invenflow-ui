@@ -1,4 +1,5 @@
 import { Form, useActionData, useNavigate } from "react-router-dom";
+import { dashboardProductUrl } from "../config/paths";
 
 export function ProductForm({ product = {} }) {
   const actionData = useActionData();
@@ -24,8 +25,8 @@ export function ProductForm({ product = {} }) {
             method={product._id ? "PUT" : "POST"}
             action={
               product._id
-                ? `/dashboard/products/${product._id}`
-                : "/dashboard/products/new"
+                ? `${dashboardProductUrl}/${product._id}`
+                : `${dashboardProductUrl}/new`
             }
           >
             <div className="space-y-4">

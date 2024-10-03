@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { currencyFormatter, firstEachWordCapitalize } from "../utils";
+import { dashboardProductUrl } from "../config/paths";
 
 export function ProductTable({ products, onDelete }) {
   return (
@@ -32,7 +33,7 @@ export function ProductTable({ products, onDelete }) {
                 </td>
                 <td className="py-2 px-2 md:px-4 border-b">
                   <Link
-                    to={`/dashboard/products/${product._id}`}
+                    to={`${dashboardProductUrl}/${product._id}`}
                     className="px-2 py-1 text-white bg-green-500 rounded ml-2"
                   >
                     Edit

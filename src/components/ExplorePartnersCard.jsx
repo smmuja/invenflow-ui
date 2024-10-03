@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { firstEachWordCapitalize } from "../utils";
 import userMaleImage from "/src/assets/user-male.png";
+import { exploreUserUrl } from "../config/paths";
 
 export function ExplorePartnersCards({ users }) {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ export function ExplorePartnersCards({ users }) {
               <div className="m-3">
                 <button
                   onClick={() => {
-                    navigate(`/explore/partners/${user.username}`);
+                    navigate(`${exploreUserUrl}/${user.username}`);
                   }}
                   className="bg-blue-500 px-4 py-2 rounded-md w-full my-3"
                 >

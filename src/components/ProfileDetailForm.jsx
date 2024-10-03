@@ -1,4 +1,5 @@
 import { Form, useActionData, useNavigate } from "react-router-dom";
+import { dashboardProfileUrl } from "../config/paths";
 
 export const Input = ({ label, ...rest }) => {
   return (
@@ -61,9 +62,8 @@ export function ProfileDetailForm({ user }) {
               method={user?._id ? "PUT" : "POST"}
               action={
                 user?._id
-                  ? `/dashboard/profile/${username}/edit`
-                  : `/dashboard/profile/${username}/new`
-                // `/dashboard/profile/${username}/edit`
+                  ? `${dashboardProfileUrl}/${username}/edit`
+                  : `${dashboardProfileUrl}${username}/new`
               }
             >
               <div className="space-y-4">
