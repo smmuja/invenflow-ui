@@ -7,7 +7,7 @@ export async function loader({ params }) {
   const { username } = params;
 
   const user = await fetcher(`/users/${username}`);
-  const products = await useFetch(`/users/${username}/products`);
+  const products = await fetcher(`/users/${username}/products`);
 
   if (!user) {
     return { userError: "User not found" };
