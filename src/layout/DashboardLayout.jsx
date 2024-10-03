@@ -1,7 +1,7 @@
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { Navbar } from "./components/Navbar";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 import { dashboardProductUrl, dashboardProfileUrl } from "../config/paths";
 
 export function DashboardLayout() {
@@ -19,6 +19,10 @@ export function DashboardLayout() {
   const location = useLocation();
   const isActiveNavLink = (path) =>
     location.pathname === path ? "active" : "";
+
+  const breadCrumbSlug = location.pathname.split("/")[2];
+  const formattedSlug =
+    breadCrumbSlug.charAt(0).toLocaleUpperCase() + breadCrumbSlug.slice(1);
 
   return (
     <>
@@ -98,7 +102,7 @@ export function DashboardLayout() {
                 </li>
                 <li>/</li>
                 <li>
-                  <Link to="/products">Products</Link>
+                  <Link to={location.pathname}>{formattedSlug}</Link>
                 </li>
               </ol>
             </nav>
