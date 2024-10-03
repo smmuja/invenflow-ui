@@ -39,6 +39,12 @@ import { RouteProtection } from "./components/RouteProtection.jsx";
 import { ProductsExploreDetailPage } from "./pages/ProductsExploreDetail.jsx";
 import { PartnersDetailPage } from "./pages/PartnersDetail.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
+import {
+  dashboardProductUrl,
+  dashboardProfileUrl,
+  exploreProductUrl,
+  exploreUserUrl,
+} from "./config/paths.js";
 
 const router = createBrowserRouter([
   {
@@ -60,23 +66,23 @@ const router = createBrowserRouter([
         element: <RegisterPage />,
       },
       {
-        path: "/explore/products",
+        path: exploreProductUrl,
         loader: productsAllLoader,
         element: <ProductsExplorePage />,
       },
       {
-        path: "/explore/products/:productId",
+        path: `${exploreProductUrl}/:productId`,
         loader: productExploreDetailLoader,
         element: <ProductsExploreDetailPage />,
       },
 
       {
-        path: "/explore/partners",
+        path: exploreUserUrl,
         loader: usersLoaderData,
         element: <PartnersExplorePage />,
       },
       {
-        path: "/explore/partners/:username",
+        path: `${exploreUserUrl}/:username`,
         loader: userDetailLoaderData,
         element: <PartnersDetailPage />,
         errorElement: <ErrorBoundary />,
@@ -89,7 +95,7 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "/dashboard/products",
+    path: dashboardProductUrl,
     element: (
       <RouteProtection>
         <DashboardLayout />
@@ -115,7 +121,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/dashboard/profile/:username",
+    path: `${dashboardProfileUrl}/:username`,
     element: (
       <RouteProtection>
         <DashboardLayout />

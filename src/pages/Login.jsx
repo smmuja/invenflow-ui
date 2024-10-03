@@ -1,4 +1,5 @@
 import { baseApi } from "../config/baseApi";
+import { dashboardProductUrl } from "../config/paths";
 import { useAuth } from "../context/AuthContext";
 import { Link, Form, useActionData, Navigate } from "react-router-dom";
 
@@ -40,7 +41,7 @@ export function LoginPage() {
     };
     localStorage.setItem("token", actionData.token);
     login(actionData.token, userInfo);
-    return <Navigate to="/dashboard/products" />;
+    return <Navigate to={dashboardProductUrl} />;
   }
 
   return (

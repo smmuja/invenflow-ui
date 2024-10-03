@@ -1,6 +1,7 @@
 import { Navigate, useActionData } from "react-router-dom";
 import { ProductForm } from "../components/ProductForm";
 import { baseApi } from "../config/baseApi";
+import { dashboardProductUrl } from "../config/paths";
 
 export async function action({ request }) {
   const formData = await request.formData();
@@ -36,7 +37,7 @@ export function ProductsAddPage() {
     return <div className="text-red-500">{actionData.error}</div>;
   }
   if (actionData?.success) {
-    return <Navigate to={"/dashboard/products"} />;
+    return <Navigate to={dashboardProductUrl} />;
   }
 
   return (

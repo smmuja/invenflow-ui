@@ -2,6 +2,7 @@ import { Outlet, Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { Navbar } from "./components/Navbar";
 import { useAuth } from "../context/AuthContext";
+import { dashboardProductUrl, dashboardProfileUrl } from "../config/paths";
 
 export function DashboardLayout() {
   const { currentUser } = useAuth();
@@ -37,18 +38,20 @@ export function DashboardLayout() {
           <nav className="p-4">
             <ul className="space-y-2">
               <Link
-                to="/dashboard/products"
+                to={dashboardProductUrl}
                 className={`block py-2 px-4 text-gray-700 ${
-                  isActiveNavLink("/dashboard/products") ? "bg-gray-200" : ""
+                  isActiveNavLink(dashboardProductUrl) ? "bg-gray-200" : ""
                 } hover:bg-gray-200 rounded`}
                 onClick={closeSidebar}
               >
                 Products
               </Link>
               <Link
-                to={`/dashboard/profile/${currentUser.username}`}
+                to={`${dashboardProfileUrl}/${currentUser.username}`}
                 className={`block py-2 px-4 text-gray-700 ${
-                  isActiveNavLink(`/dashboard/profile/${currentUser.username}`)
+                  isActiveNavLink(
+                    `${dashboardProfileUrl}/${currentUser.username}`
+                  )
                     ? "bg-gray-200"
                     : ""
                 } hover:bg-gray-200 rounded`}
@@ -57,10 +60,10 @@ export function DashboardLayout() {
                 My Profile
               </Link>
               <Link
-                to={`/dashboard/profile/${currentUser.username}/edit`}
+                to={`${dashboardProfileUrl}/${currentUser.username}/edit`}
                 className={`block py-2 px-4 text-gray-700 ${
                   isActiveNavLink(
-                    `/dashboard/profile/${currentUser.username}/edit`
+                    `${dashboardProfileUrl}/${currentUser.username}/edit`
                   )
                     ? "bg-gray-200"
                     : ""
@@ -98,12 +101,6 @@ export function DashboardLayout() {
                   <Link to="/products">Products</Link>
                 </li>
               </ol>
-              {/* <button
-                onClick={logout}
-                className="md:hidd en block py-2 px-4 text-gray-700 bg-gray-200 rounded"
-              >
-                Logout
-              </button> */}
             </nav>
             <Outlet />
           </main>

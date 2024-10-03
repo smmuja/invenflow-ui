@@ -1,3 +1,8 @@
+import {
+  dashboardProductUrl,
+  exploreProductUrl,
+  exploreUserUrl,
+} from "../../config/paths";
 import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 
@@ -9,19 +14,19 @@ export function NavItem() {
       {token ? (
         <>
           <Link
-            to="/explore/products"
+            to={exploreProductUrl}
             className="rounded-md px-4 py-2 hover:bg-gray-200"
           >
             Explore Products
           </Link>
           <Link
-            to="/explore/partners"
+            to={exploreUserUrl}
             className="rounded-md px-4 py-2 hover:bg-gray-200"
           >
             Explore Partners
           </Link>
           <Link
-            to="/dashboard/products"
+            to={dashboardProductUrl}
             className="rounded-md px-4 py-2 hover:bg-gray-200"
           >
             My Dashboard
