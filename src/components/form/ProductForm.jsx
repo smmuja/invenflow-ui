@@ -1,5 +1,6 @@
 import { Form, useActionData, useNavigate } from "react-router-dom";
 import { dashboardProductUrl } from "@/config/paths";
+import { Input, Select } from "./base";
 
 export function ProductForm({ product = {} }) {
   const actionData = useActionData();
@@ -8,6 +9,15 @@ export function ProductForm({ product = {} }) {
   const handleCancel = () => {
     navigate(-1);
   };
+
+  const categoriesOptions = [
+    "fruit",
+    "fashion",
+    "food",
+    "flower",
+    "accessories",
+    "drink",
+  ];
 
   return (
     <>
@@ -30,70 +40,42 @@ export function ProductForm({ product = {} }) {
             }
           >
             <div className="space-y-4">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  defaultValue={product.name}
-                  required
-                  className="w-full px-3 py-2 border rounded"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="price"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Price
-                </label>
-                <input
-                  type="number"
-                  name="price"
-                  id="price"
-                  defaultValue={product.price}
-                  required
-                  className="w-full px-3 py-2 border rounded"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="quantity"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Quantity
-                </label>
-                <input
-                  type="number"
-                  name="quantity"
-                  id="quantity"
-                  defaultValue={product.quantity}
-                  required
-                  className="w-full px-3 py-2 border rounded"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="category"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Category
-                </label>
-                <input
-                  type="text"
-                  name="category"
-                  id="category"
-                  defaultValue={product.category}
-                  required
-                  className="w-full px-3 py-2 border rounded"
-                />
-              </div>
+              <Input
+                label="Name"
+                type="text"
+                name="name"
+                id="name"
+                required
+                placeholder="Product Name"
+                defaultValue={product.name}
+              />
+              <Input
+                label="Price"
+                type="number"
+                name="price"
+                id="price"
+                required
+                placeholder="0"
+                defaultValue={product.price}
+              />
+              <Input
+                label="Quantity"
+                type="number"
+                name="quantity"
+                id="quantity"
+                required
+                placeholder="0"
+                defaultValue={product.quantity}
+              />
+
+              <Select
+                label="Category"
+                name="category"
+                id="category"
+                options={categoriesOptions}
+                defaultValue={product?.category || ""}
+                placeholder="Select Category"
+              />
               <div className="flex justify-end space-x-2">
                 <button
                   onClick={handleCancel}

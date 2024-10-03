@@ -1,6 +1,7 @@
 import { Navigate, useActionData, useLoaderData } from "react-router-dom";
 import { ProductForm } from "@/components/form";
 import { baseApi } from "@/config/baseApi";
+import { dashboardProductUrl } from "@/config/paths";
 
 export async function loader({ params }) {
   const token = localStorage.getItem("token");
@@ -62,7 +63,7 @@ export function DashboardProductDetailEditPage() {
   }
 
   if (actionData?.success) {
-    return <Navigate to="/products" />;
+    return <Navigate to={dashboardProductUrl} />;
   }
 
   return (
