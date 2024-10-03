@@ -63,7 +63,7 @@ export function ProfileDetailForm({ user }) {
               action={
                 user?._id
                   ? `${dashboardProfileUrl}/${username}/edit`
-                  : `${dashboardProfileUrl}${username}/new`
+                  : `${dashboardProfileUrl}/${username}/new`
               }
             >
               <div className="space-y-4">

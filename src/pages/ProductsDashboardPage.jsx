@@ -7,6 +7,7 @@ import { ModalConfirmation } from "../components/ModalConfirmation";
 import usePagination from "../hooks/usePagination";
 import { useAuth } from "../context/AuthContext";
 import { dashboardProductUrl } from "../config/paths";
+import { authLoginUrl } from "../config/paths";
 
 export async function loader() {
   const token = localStorage.getItem("token");
@@ -23,7 +24,7 @@ export async function loader() {
 
   if (response.status === 401 && !response.ok) {
     localStorage.removeItem("token");
-    window.location.href = "/login";
+    window.location.href = authLoginUrl;
     alert("Login expired");
   }
 

@@ -2,6 +2,7 @@ import { Form, useActionData } from "react-router-dom";
 import { Link, Navigate } from "react-router-dom";
 
 import { baseApi } from "../config/baseApi";
+import { authLoginUrl, authRegisterUrl } from "../config/paths";
 
 export async function action({ request }) {
   const formData = await request.formData();
@@ -30,7 +31,7 @@ export function RegisterPage() {
   const actionData = useActionData();
 
   if (actionData?.success) {
-    return <Navigate to="/login" />;
+    return <Navigate to={authLoginUrl} />;
   }
 
   return (
@@ -43,7 +44,7 @@ export function RegisterPage() {
               Failed to register: <br /> {actionData.error}
             </p>
           )}
-          <Form method="post" action="/register">
+          <Form method="post" action={authRegisterUrl}>
             <div className="space-y-4">
               <div>
                 <label
@@ -97,7 +98,7 @@ export function RegisterPage() {
           </Form>
           <p className="text-center">
             Already have an account?{" "}
-            <Link to="/login" className="text-blue-900">
+            <Link to={authLoginUrl} className="text-blue-900">
               Login
             </Link>
           </p>

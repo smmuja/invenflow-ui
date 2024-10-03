@@ -1,4 +1,5 @@
 import { baseApi } from "../config/baseApi";
+import { authLoginUrl } from "../config/paths";
 
 export async function useFetch(path, options = {}) {
   const token = localStorage.getItem("token");
@@ -17,7 +18,7 @@ export async function useFetch(path, options = {}) {
 
     if (response.status === 401) {
       localStorage.removeItem("token");
-      window.location.href = "/login";
+      window.location.href = authLoginUrl;
       alert("Login expired");
     } else if (response.status === 403) {
       alert("You don not have access to perform this operation");
