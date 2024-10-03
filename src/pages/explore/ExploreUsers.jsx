@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
-import { ExplorePartnersCards } from "../components/ExplorePartnersCard";
-import { useFetch } from "../hooks/useFetch";
+import { ExplorePartnersCards } from "../../components/ExplorePartnersCard";
+import { useFetch } from "../../hooks/useFetch";
 
 export async function loader() {
   const users = await useFetch(`/users`);
@@ -8,7 +8,7 @@ export async function loader() {
   return { users: users.data };
 }
 
-export function PartnersExplorePage() {
+export function ExploreUsersPage() {
   const { users } = useLoaderData();
 
   return (

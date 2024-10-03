@@ -1,13 +1,13 @@
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
-import { ProductTable } from "../components/ProductTable";
-import { baseApi } from "../config/baseApi";
-import useModal from "../hooks/useModal";
+import { ProductTable } from "../../components/ProductTable";
+import { baseApi } from "../../config/baseApi";
+import useModal from "../../hooks/useModal";
 import { useState } from "react";
-import { ModalConfirmation } from "../components/ModalConfirmation";
-import usePagination from "../hooks/usePagination";
-import { useAuth } from "../context/AuthContext";
-import { dashboardProductUrl } from "../config/paths";
-import { authLoginUrl } from "../config/paths";
+import { ModalConfirmation } from "../../components/ModalConfirmation";
+import usePagination from "../../hooks/usePagination";
+import { useAuth } from "../../context/AuthContext";
+import { dashboardProductUrl } from "../../config/paths";
+import { authLoginUrl } from "../../config/paths";
 
 export async function loader() {
   const token = localStorage.getItem("token");
@@ -36,7 +36,7 @@ export async function loader() {
   }
 }
 
-export function ProductsDashboardPage() {
+export function DashboardProductsPage() {
   const { token } = useAuth();
 
   const loaderData = useLoaderData();

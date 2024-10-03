@@ -1,64 +1,66 @@
-import { baseApi } from "../config/baseApi";
-import {
-  authLoginUrl,
-  authRegisterUrl,
-  dashboardProductUrl,
-} from "../config/paths";
-import { useAuth } from "../context/AuthContext";
-import { Link, Form, useActionData, Navigate } from "react-router-dom";
+import { Form, useActionData } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+
+import { baseApi } from "../../config/baseApi";
+import { authLoginUrl, authRegisterUrl } from "../../config/paths";
 
 export async function action({ request }) {
   const formData = await request.formData();
-
+  const username = formData.get("username");
   const email = formData.get("email");
   const password = formData.get("password");
 
-  const response = await fetch(`${baseApi}/auth/login`, {
+  const response = await fetch(`${baseApi}/auth/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ username, email, password }),
   });
 
-  if (!email) {
-    return { error: "Provide a valid email" };
-  }
-
   if (response.ok) {
-    const { token, user } = await response.json();
-    return { token, user };
+    alert("Successfully registered");
+    return { success: true };
   } else {
-    return { error: "Failed to login. Check your credentials" };
+    const errorResponse = await response.json();
+    return { error: errorResponse.message || "Failed to register" };
   }
 }
 
-export function LoginPage() {
+export function RegisterPage() {
   const actionData = useActionData();
-  const { login } = useAuth();
 
-  if (actionData?.token) {
-    const userInfo = {
-      _id: actionData.user._id,
-      username: actionData.user.username,
-      email: actionData.user.email,
-    };
-    localStorage.setItem("token", actionData.token);
-    login(actionData.token, userInfo);
-    return <Navigate to={dashboardProductUrl} />;
+  if (actionData?.success) {
+    return <Navigate to={authLoginUrl} />;
   }
 
   return (
     <>
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
         <div className="w-full max-w-md p-8 space-y-6 bg-white rounded shadow-md">
-          <h2 className="text-2xl font-black text-center">Login</h2>
+          <h2 className="text-2xl font-black text-center">Register</h2>
           {actionData?.error && (
-            <p className="text-red-500">{actionData.error}</p>
+            <p className="text-red-500 text-sm">
+              Failed to register: <br /> {actionData.error}
+            </p>
           )}
-
-          <Form method="post" action={authLoginUrl}>
+          <Form method="post" action={authRegisterUrl}>
             <div className="space-y-4">
+              <div>
+                <label
+                  htmlFor="username"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Username
+                </label>
+                <input
+                  type="text"
+                  name="username"
+                  id="username"
+                  required
+                  className="w-full px-3 py-2 border rounded"
+                />
+              </div>
               <div>
                 <label
                   htmlFor="email"
@@ -90,14 +92,14 @@ export function LoginPage() {
                 />
               </div>
               <button className="w-full bg-blue-500 px-4 py-2 rounded-md text-white">
-                Login
+                Register
               </button>
             </div>
           </Form>
           <p className="text-center">
-            Don't have an account yet?{" "}
-            <Link to={authRegisterUrl} className="text-blue-900">
-              Register
+            Already have an account?{" "}
+            <Link to={authLoginUrl} className="text-blue-900">
+              Login
             </Link>
           </p>
         </div>
