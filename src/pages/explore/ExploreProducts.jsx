@@ -1,10 +1,9 @@
 import { useLoaderData, useSearchParams } from "react-router-dom";
-import { ProductsCard } from "../../components/ProductsCard";
-import { useFetch } from "../../hooks/useFetch";
-import { ProductCategoryFilter } from "../../components/ProductCategoryFilter";
+import { ProductsGrid } from "@/components/features/ProductsGrid";
+import { useFetch } from "@/hooks/useFetch";
+import { ProductCategoryFilter } from "@/components/product/ProductCategoryFilter";
 import { useEffect, useState } from "react";
-import usePagination from "../../hooks/usePagination";
-import useLoadMore from "../../hooks/useLoadMore";
+import useLoadMore from "@/hooks/useLoadMore";
 
 export async function loader() {
   const products = await useFetch(`/products`);
@@ -62,7 +61,7 @@ export function ExploreProductsPage() {
         )}
       </div>
 
-      <ProductsCard products={filteredProducts} />
+      <ProductsGrid products={filteredProducts} />
     </>
   );
 }

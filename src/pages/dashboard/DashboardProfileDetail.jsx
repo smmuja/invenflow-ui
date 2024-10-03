@@ -1,9 +1,9 @@
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
-import { UserDetailCard } from "../../components/UserDetailCard";
-import { useFetch } from "../../hooks/useFetch";
-import { ProductsCard } from "../../components/ProductsCard";
-import { useAuth } from "../../context/AuthContext";
-import { dashboardProfileUrl } from "../../config/paths";
+import { UserDetailCard } from "@/components/features/UserDetailCard";
+import { useFetch } from "@/hooks/useFetch";
+import { ProductsGrid } from "@/components/features/ProductsGrid";
+import { useAuth } from "@/context/AuthContext";
+import { dashboardProfileUrl } from "@/config/paths";
 
 export async function loader({ params }) {
   const { username } = params;
@@ -56,7 +56,7 @@ export function DashboardProfileDetailPage() {
           <>
             <p className="pl-3 mb-5">{products.length} products</p>
             <div>
-              <ProductsCard products={products} />
+              <ProductsGrid products={products} />
             </div>
           </>
         ) : (

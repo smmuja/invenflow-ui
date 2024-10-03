@@ -1,5 +1,5 @@
 import { Form, useActionData, useNavigate } from "react-router-dom";
-import { dashboardProfileUrl } from "../config/paths";
+import { dashboardProfileUrl } from "../../config/paths";
 
 export const Input = ({ label, ...rest }) => {
   return (

@@ -43,8 +43,8 @@ import { loader as userDetailLoaderData } from "./pages/explore/ExploreUserDetai
 import { loader as profileDetailLoader } from "./pages/dashboard/DashboardProfileEdit.jsx";
 
 import { DashboardLayout, PublicLayout } from "./layout";
-import { RouteProtection } from "./components/RouteProtection.jsx";
-import ErrorBoundary from "./components/ErrorBoundary.jsx";
+import { RouteProtection } from "./components/common/RouteProtection.jsx";
+import ErrorBoundary from "./components/common/ErrorBoundary.jsx";
 
 const router = createBrowserRouter([
   {

@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { currencyFormatter, firstEachWordCapitalize } from "../utils";
-import { ProductCategoryBadge } from "./ProductCategoryBadge";
-import { ProductCategoryImage } from "./ProductCategoryImage";
-import { exploreProductUrl } from "../config/paths";
+import { currencyFormatter, firstEachWordCapitalize } from "@/utils";
+import {
+  ProductCategoryBadge,
+  ProductCategoryImage,
+} from "@/components/product";
+import { exploreProductUrl } from "@/config/paths";
 
-export function ProductsCard({ products }) {
+export function ProductsGrid({ products }) {
   const navigate = useNavigate();
   return (
     <>
