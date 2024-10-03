@@ -1,4 +1,4 @@
-import { firstEachWordCapitalize, dateFormatter } from "../utils";
+import { firstEachWordCapitalize, dateFormatter } from "@/utils";
 import userMaleImage from "/src/assets/user-male.png";
 
 export const DataPair = ({ label, data }) => {

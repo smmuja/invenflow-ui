@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { currencyFormatter, firstEachWordCapitalize } from "../utils";
-import { dashboardProductUrl } from "../config/paths";
+import { currencyFormatter, firstEachWordCapitalize } from "@/utils";
+import { dashboardProductUrl } from "@/config/paths";
 
 export function ProductTable({ products, onDelete }) {
   return (

@@ -1,5 +1,5 @@
 import { Form, useActionData, useNavigate } from "react-router-dom";
-import { dashboardProductUrl } from "../config/paths";
+import { dashboardProductUrl } from "@/config/paths";
 
 export function ProductForm({ product = {} }) {
   const actionData = useActionData();

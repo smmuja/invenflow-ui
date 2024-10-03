@@ -1,6 +1,6 @@
 import { Navigate, useActionData, useLoaderData } from "react-router-dom";
-import { ProductForm } from "../../components/ProductForm";
-import { baseApi } from "../../config/baseApi";
+import { ProductForm } from "@/components/form";
+import { baseApi } from "@/config/baseApi";
 
 export async function loader({ params }) {
   const token = localStorage.getItem("token");

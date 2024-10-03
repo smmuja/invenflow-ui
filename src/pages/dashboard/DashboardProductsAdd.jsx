@@ -1,7 +1,7 @@
 import { Navigate, useActionData } from "react-router-dom";
-import { ProductForm } from "../../components/ProductForm";
-import { baseApi } from "../../config/baseApi";
-import { dashboardProductUrl } from "../../config/paths";
+import { ProductForm } from "@/components/form";
+import { baseApi } from "@/config/baseApi";
+import { dashboardProductUrl } from "@/config/paths";
 
 export async function action({ request }) {
   const formData = await request.formData();

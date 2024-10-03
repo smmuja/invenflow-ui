@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom";
-import { UserDetailCard } from "../../components/UserDetailCard";
-import { useFetch } from "../../hooks/useFetch";
-import { ProductsCard } from "../../components/ProductsCard";
+import { UserDetailCard } from "@/components/features/UserDetailCard";
+import { useFetch } from "@/hooks/useFetch";
+import { ProductsGrid } from "@/components/features/ProductsGrid";
 
 export async function loader({ params }) {
   const { username } = params;
@@ -40,7 +40,7 @@ export function ExploreUserDetailPage() {
           <>
             <p className="pl-3 mb-5">{products.length} products</p>
             <div>
-              <ProductsCard products={products} />
+              <ProductsGrid products={products} />
             </div>
           </>
         ) : (

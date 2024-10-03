@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { firstEachWordCapitalize } from "../utils";
+import { firstEachWordCapitalize } from "@/utils";
 import userMaleImage from "/src/assets/user-male.png";
-import { exploreUserUrl } from "../config/paths";
+import { exploreUserUrl } from "@/config/paths";
 
-export function ExplorePartnersCards({ users }) {
+export function ExploreUsersCards({ users }) {
   const navigate = useNavigate();
   return (
     <>
