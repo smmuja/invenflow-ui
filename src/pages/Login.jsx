@@ -1,5 +1,9 @@
 import { baseApi } from "../config/baseApi";
-import { dashboardProductUrl } from "../config/paths";
+import {
+  authLoginUrl,
+  authRegisterUrl,
+  dashboardProductUrl,
+} from "../config/paths";
 import { useAuth } from "../context/AuthContext";
 import { Link, Form, useActionData, Navigate } from "react-router-dom";
 
@@ -53,7 +57,7 @@ export function LoginPage() {
             <p className="text-red-500">{actionData.error}</p>
           )}
 
-          <Form method="post" action="/login">
+          <Form method="post" action={authLoginUrl}>
             <div className="space-y-4">
               <div>
                 <label
@@ -92,7 +96,7 @@ export function LoginPage() {
           </Form>
           <p className="text-center">
             Don't have an account yet?{" "}
-            <Link to="/register" className="text-blue-900">
+            <Link to={authRegisterUrl} className="text-blue-900">
               Register
             </Link>
           </p>

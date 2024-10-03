@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { authLoginUrl, authRegisterUrl } from "../config/paths";
 
 export function HomePage() {
   const { token } = useAuth();
@@ -15,13 +16,13 @@ export function HomePage() {
           {!token && (
             <div className="flex justify-center space-x-4">
               <Link
-                to="/login"
+                to={authLoginUrl}
                 className="text-white bg-blue-500 rounded-md px-4 py-2"
               >
                 Login
               </Link>
               <Link
-                to="/register"
+                to={authRegisterUrl}
                 className=" bg-gray-200 rounded-md px-4 py-2"
               >
                 Register

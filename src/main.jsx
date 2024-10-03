@@ -40,6 +40,8 @@ import { ProductsExploreDetailPage } from "./pages/ProductsExploreDetail.jsx";
 import { PartnersDetailPage } from "./pages/PartnersDetail.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
 import {
+  authLoginUrl,
+  authRegisterUrl,
   dashboardProductUrl,
   dashboardProfileUrl,
   exploreProductUrl,
@@ -56,12 +58,12 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "/login",
+        path: authLoginUrl,
         action: loginAction,
         element: <LoginPage />,
       },
       {
-        path: "/register",
+        path: authRegisterUrl,
         action: registerAction,
         element: <RegisterPage />,
       },

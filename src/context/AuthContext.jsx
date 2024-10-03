@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { authLoginUrl } from "../config/paths";
 
 const AuthContext = createContext();
 
@@ -19,7 +20,7 @@ export function AuthProvider({ children }) {
     setToken(null);
     setCurrentUser(null);
     localStorage.removeItem("token");
-    window.location.href = "/login";
+    window.location.href = authLoginUrl;
   };
 
   useEffect(() => {
